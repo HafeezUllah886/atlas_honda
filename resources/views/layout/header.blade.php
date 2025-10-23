@@ -125,7 +125,7 @@
                       <a class="dropdown-item" href="{{url('/purchase/history')}}">{{ __('lang.PurchaseHistory') }}</a>
                       <a class="dropdown-item" href="{{route('purchasePendings')}}">Pending Purchases</a>
                       <a class="dropdown-item" href="{{ url('/stock') }}">{{ __('lang.StockDetail') }}</a>
-                      {{-- <a class="dropdown-item" href="{{ url('/stocktransfer') }}">Stock Transfer</a> --}}
+                      <a class="dropdown-item" href="{{ url('/stocktransfer') }}">Stock Transfer</a>
                     </div>
                   </li>
                 <li class="nav-item dropdown">

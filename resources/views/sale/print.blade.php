@@ -71,9 +71,9 @@
     <div class="main" id="main">
         <div style="text-align: center;">
            {{--  <img style="width:100%;margin:0 auto;height:100px;" src="{{ asset('assets/images/header.jpg') }}" alt=""> --}}
-           <h2 style="font-family: Cambria;  margin:0;" >AL-SAEED HONDA CENTER</h2>
+           <h2 style="font-family: Cambria;  margin:0;" >ATLAS HONDA CENTER</h2>
            <h3 style="font-family: Cambria;  margin:0;" >Authorized Dealer</h3>
-           <h5 style="font-family: Cambria;  margin:0;" >Art School Road Quetta | 081-2650005 | 0304-2650005</h5>
+           <h5 style="font-family: Cambria;  margin:0;" >Jamaluddin Afghani Road, Quetta <br> 081-2650005 | 0304-2650005</h5>
          </div>
         <div class="header">
            {{--  <p class="text-center"><strong>081-2502481</strong></p>
