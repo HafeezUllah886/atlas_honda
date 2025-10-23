@@ -111,7 +111,9 @@
                                             <a class="dropdown-item text-success" href="#" data-toggle="modal" data-target="#receive_{{ $bill->id }}">Deliver Products</a>
                                             @endif
                                             <a class="dropdown-item" href="{{ url('/sale/edit/') }}/{{ $bill->id }}">Edit</a>
+                                            @if (auth()->user()->role == 1)
                                             <a class="dropdown-item text-danger" href="{{ url('/sale/delete/') }}/{{ $bill->ref }}">Delete</a>
+                                            @endif
                                           </div>
                                         </div>
                                       </div>

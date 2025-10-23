@@ -54,6 +54,7 @@
                             @endphp
 
                             @foreach ($products as $product)
+                            @if($product->sale_quantity > 0)
                             @php
                                 $ser += 1;
                                 $total += ($product->sale_quantity - $product->return) * $product->ppu;
@@ -72,6 +73,7 @@
                                 <td> {{ $product->available_stock}} </td>
                                 <td> {{ $product->available_stock * $product->price}} </td>
                             </tr>
+                            @endif
                             @endforeach
                             <tr>
                             <td colspan="8" style="text-align: right;"> <strong>{{__('lang.Total')}}</strong> </td>

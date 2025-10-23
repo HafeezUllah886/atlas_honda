@@ -123,9 +123,12 @@
                     <div class="dropdown-menu">
                       <a class="dropdown-item" href="{{ url('/purchase') }}">{{ __('lang.CreatePurchase') }}</a>
                       <a class="dropdown-item" href="{{url('/purchase/history')}}">{{ __('lang.PurchaseHistory') }}</a>
+                      @if (auth()->user()->role == 1)
                       <a class="dropdown-item" href="{{route('purchasePendings')}}">Pending Purchases</a>
+                       <a class="dropdown-item" href="{{ url('/stocktransfer') }}">Stock Transfer</a>
+                      @endif
                       <a class="dropdown-item" href="{{ url('/stock') }}">{{ __('lang.StockDetail') }}</a>
-                      <a class="dropdown-item" href="{{ url('/stocktransfer') }}">Stock Transfer</a>
+                     
                     </div>
                   </li>
                 <li class="nav-item dropdown">
@@ -143,15 +146,14 @@
                     {{ __('lang.Finance') }}
                   </a>
                   <div class="dropdown-menu">
-                    @if (auth()->user()->role != 3)
-                    <a class="dropdown-item" href="{{ url('/accounts') }}">{{ __('lang.Accounts') }}</a>
-                    @endif
                     @if (auth()->user()->role == 1)
+                     <a class="dropdown-item" href="{{ url('/accounts') }}">{{ __('lang.Accounts') }}</a>
                     <a class="dropdown-item" href="{{ url('/deposit') }}">{{ __('lang.Deposit') }}</a>
                     <a class="dropdown-item" href="{{ url('/withdraw') }}">{{ __('lang.Withdraw') }}</a>
+                    <a class="dropdown-item" href="{{ url('/transfer') }}">{{ __('lang.Transfer') }}</a>
                     @endif
                     @if (auth()->user()->role != 3)
-                    <a class="dropdown-item" href="{{ url('/transfer') }}">{{ __('lang.Transfer') }}</a>
+                    
                     <a class="dropdown-item" href="{{ url('/expense') }}">{{ __('lang.Expense') }}</a>
                     @endif
                   </div>
@@ -166,6 +168,7 @@
                         Stock Alert
                     </a>
                   </li>
+                  @if (auth()->user()->role == 1)
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                       Others
@@ -178,9 +181,9 @@
                       @endif
                     </div>
                   </li>
-
+                  @endif
               </ul>
-              @if (auth()->user()->role != 3 )
+              @if (auth()->user()->role == 3 )
               <a class="btn btn-success" href="{{ url('/pos') }}">POS</a>
               @endif
                    <a class="btn btn-primary ml-4" href="{{ url('/logout') }}" >
