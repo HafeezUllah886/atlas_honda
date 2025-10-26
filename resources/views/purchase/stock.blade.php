@@ -80,7 +80,7 @@
                             </tr>
                             @endforeach
                         </tbody>
-                        @if(auth()->user()->role == 1)
+                        @if(auth()->user()->role != 3)
                             <tfoot>
                                 <tr>
                                     <td colspan="10" style="text-align: right;"> <strong>Total</strong> </td>
