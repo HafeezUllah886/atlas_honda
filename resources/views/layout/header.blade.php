@@ -183,7 +183,7 @@
                   </li>
                   @endif
               </ul>
-              @if (auth()->user()->role == 3 )
+              @if (auth()->user()->role != 3 )
               <a class="btn btn-success" href="{{ url('/pos') }}">POS</a>
               @endif
                    <a class="btn btn-primary ml-4" href="{{ url('/logout') }}" >

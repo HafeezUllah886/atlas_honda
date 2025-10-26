@@ -41,11 +41,11 @@
                                 <th class="border-top-0">Model</th>
                                 <th class="border-top-0">Rak No</th>
                                 <th class="border-top-0">Avail Stock</th>
-                                @if(auth()->user()->role == 1)
+                                @if(auth()->user()->role != 3)
                                 <th class="border-top-0">Purchase</th>
                                 @endif
                                 <th class="border-top-0">Retail</th>
-                                @if(auth()->user()->role == 1)
+                                @if(auth()->user()->role != 3)
                                 <th class="border-top-0">Wholesale</th>
                                 <th class="border-top-0">{{ __('lang.StockValue') }}</th>
                                 @endif
@@ -69,11 +69,11 @@
                                 <td>{{$item['model']}}</td>
                                 <td>{{$item['brand']}}</td>
                                 <td>{{$item['balance']}}</td>
-                                @if(auth()->user()->role == 1)
+                                @if(auth()->user()->role != 3)
                                 <td>{{$item['price']}}</td>
                                 @endif
                                 <td>{{$item['retail']}}</td>
-                                @if(auth()->user()->role == 1)
+                                @if(auth()->user()->role != 3)
                                 <td>{{$item['wholesale']}}</td>
                                 <td>{{$item['value']}}</td>
                                 @endif
@@ -88,7 +88,6 @@
                                 </tr>
                             </tfoot>
                         @endif
-                        
                     </table>
             </div>
         </div>
