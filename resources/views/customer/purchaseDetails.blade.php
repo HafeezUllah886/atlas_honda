@@ -18,6 +18,17 @@
         <div class="card-header">
             <div class="d-flex justify-content-between">
                 <h4>{{ __('lang.PurchaseDetails') }}</h4>
+                 <div class="w-50">
+                   
+                        <form action="{{ url('/customer/purchaseDetails/') }}/{{ $id }}"  method="get">
+                             <div class="row">  
+                        <div class="col-4"> <input type="date" value="{{$from}}" name="from" onchange="refresh()" id="from" class="form-control"></div>
+                        <div class="col-4"><input type="date" value="{{$to}}" name="to" onchange="refresh()" id="to" class="form-control"></div>
+                        <div class="col-4 d-flex justify-content-end"><button type="submit" class="btn btn-primary w-100">Filter</button></div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
                 {{-- <a href="{{ url('/customer/purchaseDetails/pdf/') }}/{{ $invoices[0]->customer }}" class="btn btn-success">PDF</a> --}}
             </div>
         </div>
@@ -32,6 +43,7 @@
                             <tr>
                                 <th class="border-top-0">{{ __('lang.Ser') }}</th>
                                 <th class="border-top-0">{{ __('lang.Date') }}</th>
+                                <th class="border-top-0">{{ __('lang.Code') }}</th>
                                 <th class="border-top-0">{{ __('lang.Product') }}</th>
                                 <th class="border-top-0">{{ __('lang.Price') }}</th>
                                 <th class="border-top-0">{{ __('lang.Quantity') }}</th>
@@ -52,6 +64,7 @@
                                 <tr>
                                     <td> {{ $ser }} </td>
                                     <td>{{ date("d M Y", strtotime($item->date)) }}</td>
+                                    <td>{{ $product->product->code }}</td>
                                     <td>{{ $product->product->name }}</td>
                                     <td>{{ $product->price }}</td>
                                     <td>{{ $product->qty }}</td>

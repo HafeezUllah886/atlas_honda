@@ -385,9 +385,12 @@ class AccountController extends Controller
         return view('finance.payment_receipt_print')->with(compact('transfer', 'prev_balance', 'cur_balance'));
     }
 
-    public function customersPurchase($id){
-        $invoices = sale::with('details')->where('customer',$id)->orderBy('id', 'desc')->get();
-        return view('customer.purchaseDetails')->with(compact('invoices'));
+    public function customersPurchase(Request $request, $id){
+
+        $from = $request->from ?? date('Y-m-d');
+        $to = $request->to ?? date('Y-m-d');
+        $invoices = sale::with('details')->where('customer',$id)->whereBetween('date', [$from, $to])->orderBy('id', 'desc')->get();
+        return view('customer.purchaseDetails')->with(compact('invoices', 'from', 'to', 'id'));
     }
     public function customersPurchasePDF($id){
         $invoices = sale::with('details')->where('customer',$id)->get();
