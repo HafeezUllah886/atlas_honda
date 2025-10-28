@@ -18,7 +18,7 @@
         <div class="card-header">
             <div class="d-flex justify-content-between">
                 <h4>{{ __('lang.PurchaseDetails') }}</h4>
-                <a href="{{ url('/customer/purchaseDetails/pdf/') }}/{{ $invoices[0]->customer }}" class="btn btn-success">PDF</a>
+                {{-- <a href="{{ url('/customer/purchaseDetails/pdf/') }}/{{ $invoices[0]->customer }}" class="btn btn-success">PDF</a> --}}
             </div>
         </div>
     </div>
