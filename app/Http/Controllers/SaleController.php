@@ -59,6 +59,7 @@ class SaleController extends Controller
                 'price' => $req->price,
                 'discount' => $req->discount,
                 'warehouseID' => auth()->user()->warehouseID,
+                'created_by' => auth()->user()->id
             ]
         );
 
@@ -66,7 +67,7 @@ class SaleController extends Controller
     }
 
     public function draftItems(){
-        $items = sale_draft::with('product')->where('warehouseID', auth()->user()->warehouseID)->get();
+        $items = sale_draft::with('product')->where('warehouseID', auth()->user()->warehouseID)->where('created_by', auth()->user()->id)->get();
 
         return view('sale.draft')->with(compact('items'));
     }
@@ -138,6 +139,7 @@ class SaleController extends Controller
             'dc' => $req->dc,
             'isPaid' => $req->isPaid,
             'ref' => $ref,
+            'created_by' => auth()->user()->id,
             'status' => $req->status,
         ]);
 
@@ -234,8 +236,16 @@ class SaleController extends Controller
              $from = date('Y-m-d 07:00:s');
             $to = date('Y-m-d H:i:s');
         }
+        if(auth()->user()->role == 1)
+        {
+            $history = sale::with('customer_account', 'account')->whereBetween('date', [$from, $to])->where('warehouseID', auth()->user()->warehouseID)->orderBy('id', 'desc')->get();
 
-        $history = sale::with('customer_account', 'account')->whereBetween('date', [$from, $to])->where('warehouseID', auth()->user()->warehouseID)->orderBy('id', 'desc')->get();
+        }
+        else
+        {
+            $history = sale::with('customer_account', 'account')->whereBetween('date', [$from, $to])->where('created_by', auth()->user()->id)->where('warehouseID', auth()->user()->warehouseID)->orderBy('id', 'desc')->get();
+        }
+
         foreach($history as $bill)
         {
             $pendings = [];
@@ -365,6 +375,7 @@ class SaleController extends Controller
     public function deleteEdit($id)
     {
         $item = sale_details::find($id);
+        dd($item);
         $delivers = sale_receives::where('productID', $item->product_id)->where('saleID', $item->bill_id)->first();
         if($delivers)
         {
