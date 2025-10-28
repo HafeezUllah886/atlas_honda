@@ -222,7 +222,7 @@ input[type=number] {
                             <label for="account">Account</label>
                             <select name="account" id="account" class="form-control">
                                 @foreach ($accounts as $account)
-                                    <option value="{{ $account->id }}">{{ $account->title }}</option>
+                                    <option value="{{ $account->id }}" @selected($account->id == 5)>{{ $account->title }}</option>
                                 @endforeach
                             </select>
                         </div>
