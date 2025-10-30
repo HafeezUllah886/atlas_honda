@@ -24,7 +24,9 @@ App::setLocale(auth()->user()->lang);
                     $firstDateOfMonth = date('Y-m-01', strtotime($currentMonth));
                     $lastDateOfMonth = date('Y-m-t', strtotime($currentMonth));
                     @endphp
-                    <a href="{{ url('/profit') }}/{{ $firstDateOfMonth }}/{{ $lastDateOfMonth }}" class="btn btn-info mr-2">{{ __('lang.Profit/Loss') }}</a>
+                    @if (auth()->user()->role == 1)
+                        <a href="{{ url('/profit') }}/{{ $firstDateOfMonth }}/{{ $lastDateOfMonth }}" class="btn btn-info mr-2">{{ __('lang.Profit/Loss') }}</a>
+                    @endif
                     <a href="{{ url('/products/trashed') }}" class="btn btn-dark mr-2">{{ __('lang.Trashed') }}</a>
                     <button class="btn btn-success mr-2" data-toggle="modal" data-target="#modal">{{ __('lang.CreateNew') }}</button>
                     {{-- <button class="btn btn-primary" data-toggle="modal" data-target="#importModal">Import</button> --}}
